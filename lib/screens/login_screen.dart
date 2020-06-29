@@ -275,10 +275,10 @@ class _LoginScreenState extends State<LoginScreen> {
     return GestureDetector(
       //onTap: onTap,
       child: Container(
-        height: 60.0,
-        width: 180.0,
+        height: 90.0,
+        width: 100.0,
         decoration: BoxDecoration( 
-          shape: BoxShape.rectangle,
+          shape: BoxShape.circle,
           color: Colors.white,
           boxShadow: [
             BoxShadow(
@@ -309,7 +309,7 @@ Widget _showLogo(){
           _buildLogo(
             () => print('Logo'),
             AssetImage(
-              'assets/logos/logo.jpeg',
+              'assets/logos/icon.png',
               
             ),
           ),

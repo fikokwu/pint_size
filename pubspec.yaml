@@ -58,6 +58,7 @@ flutter:
    - assets/logos/google.jpg
    - assets/logos/logo.jpeg
    - assets/logos/profile.jpeg
+   - assets/logos/icon.png
 
 
   fonts:
