@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pint_size/screens/signup_screen.dart';
 import 'package:pint_size/utilities/constants.dart';
 import '../main.dart';
 import 'package:pint_size/screens/dashboard_screen.dart';
@@ -244,7 +245,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _buildSignupBtn() {
     return GestureDetector(
-      onTap: () => print('Sign Up Button Pressed'),
+      onTap: () {
+        Navigator.push(
+                  context,
+                  
+                  MaterialPageRoute(
+                    
+                    builder: (context) => SignUpScreen()
+                    
+                  ),
+                ); // Navigation
+      },
       child: RichText(
         text: TextSpan(
           children: [
@@ -257,7 +268,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             TextSpan(
-              text: 'Sign In',
+              text: 'Sign Up',
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 18.0,
@@ -362,16 +373,7 @@ Widget _showLogo(){
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      
-                      // Text(
-                      //   //'Pint Size ',
-                      //   style: TextStyle(
-                      //     color: Colors.black,
-                      //     fontFamily: 'OpenSans',
-                      //     fontSize: 30.0,
-                      //     fontWeight: FontWeight.bold,
-                      //   ),
-                      // ),
+                 
                       _showLogo(),
                        
                       SizedBox(height: 30.0),

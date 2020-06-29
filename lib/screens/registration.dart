@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import 'package:pint_size/utilities/MyBottomNavBar.dart';
-import 'package:pint_size/utilities/nav_drawer.dart';
 
 class Registration extends StatelessWidget {
   @override
