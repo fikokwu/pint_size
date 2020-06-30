@@ -6,6 +6,7 @@ import 'package:pint_size/screens/calendar_screen.dart';
 import 'package:pint_size/screens/campaign_screen.dart';
 import 'package:pint_size/screens/dashboard_screen.dart';
 import 'package:pint_size/screens/login_screen.dart';
+import 'package:pint_size/screens/signup_screen.dart';
 
 
 void main() => runApp(MyApp());
