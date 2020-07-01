@@ -152,6 +152,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
           height: 40.0,
+          
           child: TextField(
             obscureText: true,
             style: TextStyle(
@@ -178,7 +179,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget _buildSignUpBtn() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
-      width: 200,
+      width: 250,
       child: RaisedButton(
           elevation: 4.0,
           //onPressed: () => HomeScreen,
@@ -212,6 +213,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Widget _builGoogleSignUpBtn() {
     return Container(
+      width: 250,
       child: Padding(
         padding: EdgeInsets.only(top: 10.0),
         child: SignInButton(
@@ -228,6 +230,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Widget _buildFacebookSignUpBtn() {
     return Container(
+      width: 250,
       child: Padding(
         padding: EdgeInsets.only(top: 8.0),
         child: SignInButton(
