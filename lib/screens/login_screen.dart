@@ -229,13 +229,13 @@ class _LoginScreenState extends State<LoginScreen> {
           _buildSocialBtn(
             () => print('Login with Facebook'),
             AssetImage(
-              'assets/logos/facebook.jpg',
+              'asset/logos/facebook.jpg',
             ),
           ),
           _buildSocialBtn(
             () => print('Login with Google'),
             AssetImage(
-              'assets/logos/google.jpg',
+              'asset/logos/google.jpg',
             ),
           ),
         ],
@@ -320,7 +320,7 @@ Widget _showLogo(){
           _buildLogo(
             () => print('Logo'),
             AssetImage(
-              'assets/logos/icon.png',
+              'asset/logos/icon.png',
               
             ),
           ),

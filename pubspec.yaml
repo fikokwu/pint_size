@@ -21,12 +21,16 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  
   flutter_screenutil: ^0.4.2
   flutter_launcher_icons: ^0.7.5
   table_calendar: ^2.2.3
   shared_preferences: ^0.5.7+3
+
+  flutter_signin_button: ^1.0.0
   flutter:
     sdk: flutter
+  
 
 flutter_icons:
   image_path: "assets/logos/icon.png"
@@ -55,17 +59,17 @@ flutter:
   uses-material-design: true
 
   assets:
-   - assets/logos/facebook.jpg
-   - assets/logos/google.jpg
-   - assets/logos/logo.jpeg
-   - assets/logos/profile.jpeg
-   - assets/logos/icon.png
+   - asset/logos/facebook.jpg
+   - asset/logos/google.jpg
+   - asset/logos/logo.jpeg
+   - asset/logos/profile.jpeg
+   - asset/logos/icon.png
 
 
   fonts:
     - family: OpenSans
       fonts:
-        - asset: assets/fonts/OpenSans.ttf
+        - asset: asset/fonts/OpenSans.ttf
 
   # To add assets to your application, add an assets section, like this:
   # assets:
