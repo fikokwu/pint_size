@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pint_size/screens/signup_screen.dart';
 import 'package:pint_size/utilities/constants.dart';
-import '../main.dart';
 import 'package:pint_size/screens/dashboard_screen.dart';
+import 'package:flutter/services.dart';
+
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -336,6 +337,10 @@ Widget _showLogo(){
 
   @override
   Widget build(BuildContext context) {
+    // SystemChrome.setPreferredOrientations([
+    //   DeviceOrientation.portraitUp,
+    //   DeviceOrientation.portraitDown,
+    // ]);
     return Scaffold(
       
       body: AnnotatedRegion<SystemUiOverlayStyle>(

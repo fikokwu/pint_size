@@ -6,7 +6,9 @@ import 'package:pint_size/screens/calendar_screen.dart';
 import 'package:pint_size/screens/campaign_screen.dart';
 import 'package:pint_size/screens/dashboard_screen.dart';
 import 'package:pint_size/screens/login_screen.dart';
-import 'package:pint_size/screens/signup_screen.dart';
+import 'package:flutter/services.dart';
+
+
 
 
 void main() => runApp(MyApp());
@@ -17,6 +19,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
       
       debugShowCheckedModeBanner: false;
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return MaterialApp(
       title: ('Pint Size'),
       theme: ThemeData(

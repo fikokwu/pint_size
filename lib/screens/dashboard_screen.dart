@@ -33,7 +33,9 @@ class DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: NavDrawer(),
+
       body: Column(
+       
         children: <Widget>[
           Stack(
             children: <Widget>[
@@ -112,6 +114,7 @@ class DashboardScreenState extends State<DashboardScreen> {
               )
             ],
           ),
+       
           RadialProgress(),
           MonthlyStatusListing(),
         ],
@@ -125,9 +128,13 @@ class MonthlyStatusListing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Flexible(
+
+      child: SingleChildScrollView(
+    
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
+       
         children: <Widget>[
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -162,6 +169,7 @@ class MonthlyStatusListing extends StatelessWidget {
           ),
         ],
       ),
+      ),
     );
   }
 }
@@ -174,6 +182,7 @@ class MonthlyStatusRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
+      
       padding: const EdgeInsets.only(bottom: 10.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

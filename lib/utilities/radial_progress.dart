@@ -44,9 +44,9 @@ class _RadialProgressState extends State<RadialProgress>
     return CustomPaint(
       
       child: Container(
-        height: 385,
+        height: 285,
         width: 200,
-        padding: EdgeInsets.symmetric(vertical: 142.0),
+        padding: EdgeInsets.symmetric(vertical: 90.0),
         child: AnimatedOpacity(
          
           opacity: progressDegrees > 30 ? 1.0 : 0.0,
