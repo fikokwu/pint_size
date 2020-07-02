@@ -8,17 +8,14 @@ import 'package:pint_size/screens/dashboard_screen.dart';
 import 'package:pint_size/screens/login_screen.dart';
 import 'package:flutter/services.dart';
 
-
-
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.8=52
   @override
   Widget build(BuildContext context) {
-      
-      debugShowCheckedModeBanner: false;
+    debugShowCheckedModeBanner:
+    false;
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
@@ -29,7 +26,8 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.black,
         //cardTheme: CardTheme(color:Colors.black),
         textTheme: TextTheme(
-          bodyText1: TextStyle(color: Colors.white, fontSize: 21, fontWeight: FontWeight.bold),
+          bodyText1: TextStyle(
+              color: Colors.white, fontSize: 21, fontWeight: FontWeight.bold),
         ),
         iconTheme: IconThemeData(color: Colors.white),
       ),
@@ -41,8 +39,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => DashboardScreen(),
         '/campaign': (context) => CampaignScreen(),
         '/calendar': (context) => CalendarScreen(),
-      }, 
-      
+      },
     );
   }
 }
@@ -53,11 +50,14 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  void initState(){
+  void initState() {
     super.initState();
-    Timer(Duration(seconds: 5), () => print("hello"),);
-
+    Timer(
+      Duration(seconds: 5),
+      () => print("hello"),
+    );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +65,9 @@ class _SplashScreenState extends State<SplashScreen> {
         fit: StackFit.expand,
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(color:Color(0xffddac00), ),
+            decoration: BoxDecoration(
+              color: Color(0xffddac00),
+            ),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -76,8 +78,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                        _showLogo(),
-                        
+                      _showLogo(),
                     ],
                   ),
                 ),
@@ -87,8 +88,12 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    CircularProgressIndicator(backgroundColor: Colors.black, valueColor: new AlwaysStoppedAnimation(Colors.white),),
-                    Padding(padding: EdgeInsets.only(top:20.0),
+                    CircularProgressIndicator(
+                      backgroundColor: Colors.black,
+                      valueColor: new AlwaysStoppedAnimation(Colors.white),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 20.0),
                     ),
                     Text(
                       "Pint Size App",
@@ -96,52 +101,44 @@ class _SplashScreenState extends State<SplashScreen> {
                         color: Colors.black,
                         fontSize: 18.0,
                         fontWeight: FontWeight.bold,
-
-                    ), 
+                      ),
                     ),
                   ],
-
                 ),
               ),
-
-          ],)
+            ],
+          )
         ],
       ),
     );
   }
-  Widget _buildLogo(Function onTap, AssetImage logo){
 
+  Widget _buildLogo(Function onTap, AssetImage logo) {
     return GestureDetector(
       //onTap: onTap,
       child: Container(
         height: 60.0,
         width: 180.0,
-        decoration: BoxDecoration( 
+        decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           color: Colors.white,
           boxShadow: [
             BoxShadow(
               color: Colors.black26,
-              offset: Offset(0,2),
+              offset: Offset(0, 2),
               blurRadius: 6.0,
             ),
           ], //boxshadow
           image: DecorationImage(
             image: logo,
           ),
-
         ),
-
       ),
-
     );
+  } // buildlogo
 
-
-  }// buildlogo
-
-
-Widget _showLogo(){
-     return Padding(
+  Widget _showLogo() {
+    return Padding(
       padding: EdgeInsets.fromLTRB(0.0, 00.0, 0.0, 0.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -150,7 +147,6 @@ Widget _showLogo(){
             () => print('Logo'),
             AssetImage(
               'assets/logos/logo.jpeg',
-              
             ),
           ),
         ],
@@ -158,4 +154,3 @@ Widget _showLogo(){
     );
   } // showlogo
 }
-

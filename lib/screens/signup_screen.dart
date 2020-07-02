@@ -18,15 +18,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        // Text(
-        //   'Username',
-        //   textAlign: TextAlign.center,
-        //   style: TextStyle(
-        //     color: Colors.black,
-        //     fontWeight: FontWeight.bold,
-        //   ),
-        // ),
-        SizedBox(height: 20.0),
+
+        SizedBox(height: 10.0),
         Container(
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
@@ -275,7 +268,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(top: 90),
+                padding: EdgeInsets.only(top: 70),
                 child: Image.asset(
                   'asset/logos/icon.png',
                   scale: 6.0,
@@ -300,7 +293,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
           SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.only(left: 28, right: 28.0, top: 190.0),
+              padding: EdgeInsets.only(left: 28, right: 28.0, top: 180.0),
               child: Column(
                 children: <Widget>[
                   SizedBox(
@@ -311,7 +304,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     height: ScreenUtil.getInstance().setHeight(450),
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(80.0),
+                        borderRadius: BorderRadius.circular(60.0),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black12,
@@ -326,7 +319,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ]),
                     child: Padding(
                       padding:
-                          EdgeInsets.only(left: 16.0, right: 16.0, top: 20.0),
+                          EdgeInsets.only(left: 16.0, right: 16.0, top: 20.0,),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -341,11 +334,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   Container(
                     width: double.infinity,
                     height: 370,
-                    padding: EdgeInsets.fromLTRB(0, 0, 0, 70),
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 110),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        //SizedBox(height: 0),
 
                         _buildSignUpBtn(),
                         _buildSignUpWithText(),
@@ -364,80 +356,5 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-//   @override
-//   Widget build(BuildContext context) {
 
-//     return Scaffold(
-//       backgroundColor: Colors.white,
-//       resizeToAvoidBottomInset: true,
-//       body: Stack(
-//         fit: StackFit.expand,
-//         //value: SystemUiOverlayStyle.light,
-
-//             children: <Widget>[
-//              SingleChildScrollView(
-//              child: Container(
-//                 height: double.infinity,
-//                 width: double.infinity,
-
-//            child: Container(
-//                 height: ScreenUtil.getInstance().setHeight(500),
-//                 width: double.infinity,
-
-//                 decoration: BoxDecoration(
-//                   color: Colors.white,
-//                   borderRadius: BorderRadius.circular(8.0),
-//                   boxShadow: [
-//                     BoxShadow (
-//                       color: Colors.black12,
-//                       offset: Offset(0.0, 1.5),
-//                       blurRadius: 15.0
-//                     ),
-//                     BoxShadow(
-//                       color: Colors.black12,
-//                       offset: Offset(0.0,-10.0),
-//                       blurRadius: 10.0,
-//                     ),
-
-//                   ],
-//                 ),
-
-//                   padding: EdgeInsets.symmetric(
-//                     horizontal: 40.0,
-//                     vertical: 100.0,
-//                   ),
-//                   child: Column(
-//                     mainAxisAlignment: MainAxisAlignment.center,
-//                     children: <Widget>[
-//                       // _showLogo(),
-
-//                       SizedBox(height: 30.0),
-//                       _buildUserName(),
-//                       _buildName(),
-//                       _buildEmailTF(),
-//                       _buildPasswordTF(),
-//                       SizedBox(
-//                         height: 30.0,
-//                       ),
-//                       //_buildLogo(),
-
-//                       //  // _buildPasswordTF(),
-//                       //   _buildForgotPasswordBtn(),
-//                       //   _buildRememberMeCheckbox(),
-//                       //   _buildLoginBtn(),
-//                       //   _buildSignInWithText(),
-//                       //   _buildSocialBtnRow(),
-//                       //   _buildSignupBtn(),
-//                     ],
-//                   ),
-//                 ),
-//              ),
-//               ),
-//             ],
-//           ),
-//         );
-
-//       // bottomNavigationBar: MyBottomNavigationBar(),
-
-//   }
 }

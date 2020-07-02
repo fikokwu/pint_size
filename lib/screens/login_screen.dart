@@ -314,7 +314,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
 Widget _showLogo(){
      return Padding(
-      padding: EdgeInsets.fromLTRB(0.0, 00.0, 0.0, 0.0),
+      padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
@@ -373,7 +373,7 @@ Widget _showLogo(){
                   physics: AlwaysScrollableScrollPhysics(),
                   padding: EdgeInsets.symmetric(
                     horizontal: 40.0,
-                    vertical: 120.0,
+                    vertical: 60.0,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

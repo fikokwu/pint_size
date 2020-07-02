@@ -26,6 +26,8 @@ dependencies:
   flutter_launcher_icons: ^0.7.5
   table_calendar: ^2.2.3
   shared_preferences: ^0.5.7+3
+  firebase_core: ^0.4.5
+  firebase_database: ^3.1.6
 
   flutter_signin_button: ^1.0.0
   flutter:
@@ -46,6 +48,7 @@ flutter_icons:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

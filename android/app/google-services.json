@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "535663490773",
+    "firebase_url": "https://pintsize-5c61a.firebaseio.com",
+    "project_id": "pintsize-5c61a",
+    "storage_bucket": "pintsize-5c61a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:535663490773:android:22779a4649a29430d2145c",
+        "android_client_info": {
+          "package_name": "com.example.pint_size"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "535663490773-hstdjnp3lsvin6ino8tkk6vbsde3ts8p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8xPdX09zUoBbZhJTjGx3_VnD53lWcU18"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "535663490773-hstdjnp3lsvin6ino8tkk6vbsde3ts8p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "535663490773-b13npmip81osctbghvbpn4vp0ctcavi8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.pintSize"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
