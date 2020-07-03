@@ -6,6 +6,7 @@ import 'package:pint_size/screens/signup_screen.dart';
 import 'package:pint_size/utilities/constants.dart';
 import 'package:pint_size/screens/dashboard_screen.dart';
 import 'package:flutter/services.dart';
+import 'package:pint_size/utilities/authentication.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -208,7 +209,7 @@ class _LoginScreenState extends State<LoginScreen> {
           text: 'Sign in with Google',
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(60.0)),
-          onPressed: () => print('google sign in pressed'),
+          onPressed: () => authService.googleSignIn(),
         ),
       ),
     );
@@ -414,7 +415,7 @@ Widget _showLogo(){
                   physics: AlwaysScrollableScrollPhysics(),
                   padding: EdgeInsets.symmetric(
                     horizontal: 40.0,
-                    vertical: 60.0,
+                    vertical: 95.0,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -438,7 +439,7 @@ Widget _showLogo(){
                       //_buildSocialBtnRow(),
                       _buildGoogleSignUpBtn(),
                       _buildFacebookSignUpBtn(),
-                      SizedBox(height: 20),
+                      SizedBox(height: 30),
                       _buildSignupBtn(),
                     ],
                   ),

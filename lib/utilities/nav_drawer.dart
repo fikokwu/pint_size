@@ -5,6 +5,7 @@ import 'package:pint_size/screens/campaign_screen.dart';
 import 'package:pint_size/screens/dashboard_screen.dart';
 import 'package:pint_size/screens/login_screen.dart';
 import 'package:pint_size/screens/profile_screen.dart';
+import 'package:pint_size/utilities/authentication.dart';
 
 class NavDrawer extends StatefulWidget {
   _NavDrawerState createState() => _NavDrawerState();
@@ -113,7 +114,7 @@ class _NavDrawerState extends State<NavDrawer> {
                 color: Colors.white,
               ),
               title: Text('Logout'),
-              onTap: () => alertDialog(context),
+              onTap: () => authService.signOut(),
 
               // Navigator.push(
               //   context,
