@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_signin_button/button_list.dart';
+import 'package:flutter_signin_button/button_view.dart';
 import 'package:pint_size/screens/signup_screen.dart';
 import 'package:pint_size/utilities/constants.dart';
 import 'package:pint_size/screens/dashboard_screen.dart';
@@ -183,19 +185,54 @@ class _LoginScreenState extends State<LoginScreen> {
           '- OR -',
           style: TextStyle(
             color: Colors.black,
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
           ),
         ),
-        SizedBox(height: 20.0),
-        Text(
-          'Sign in with',
-          style: TextStyle(
-            color: Colors.black,
-          ),
-        ),
+        SizedBox(height: 10.0),
+        
       ],
     );
   }
+
+  
+
+  Widget _buildGoogleSignUpBtn() {
+    return Container(
+      width: 250,
+      child: Padding(
+        padding: EdgeInsets.only(top: 10.0),
+        child: SignInButton(
+          Buttons.Google,
+          padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
+          text: 'Sign in with Google',
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(60.0)),
+          onPressed: () => print('google sign in pressed'),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFacebookSignUpBtn() {
+    return Container(
+      width: 250,
+      child: Padding(
+        padding: EdgeInsets.only(top: 8.0),
+        child: SignInButton(
+          Buttons.Facebook,
+          padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+          //text: 'Sign In in with Facebook',
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(60.0)),
+          onPressed: () => print('facebook sign in pressed'),
+        ),
+      ),
+    );
+  }
+
+
+
 
   Widget _buildSocialBtn(Function onTap, AssetImage logo) {
     return GestureDetector(
@@ -221,31 +258,34 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildSocialBtnRow() {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 30.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          _buildSocialBtn(
-            () => print('Login with Facebook'),
-            AssetImage(
-              'asset/logos/facebook.jpg',
-            ),
-          ),
-          _buildSocialBtn(
-            () => print('Login with Google'),
-            AssetImage(
-              'asset/logos/google.jpg',
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  // Widget _buildSocialBtnRow() {
+  //   return Padding(
+  //     padding: EdgeInsets.symmetric(vertical: 30.0),
+  //     child: Row(
+  //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //       children: <Widget>[
+  //         //_builGoogleSignUpBtn(),
+  //         _buildSocialBtn(
+  //           () => print('Login with Facebook'),
+  //           AssetImage(
+  //             'asset/logos/facebook.jpg',
+  //           ),
+  //         ),
+  //         _buildSocialBtn(
+            
+  //           () => print('Login with Google'),
+  //           AssetImage(
+  //             'asset/logos/google.jpg',
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 
   Widget _buildSignupBtn() {
     return GestureDetector(
+      
       onTap: () {
         Navigator.push(
                   context,
@@ -260,6 +300,7 @@ class _LoginScreenState extends State<LoginScreen> {
       child: RichText(
         text: TextSpan(
           children: [
+            
             TextSpan(
               text: 'Don\'t have an Account? ',
               style: TextStyle(
@@ -393,7 +434,11 @@ Widget _showLogo(){
                       _buildRememberMeCheckbox(),
                       _buildLoginBtn(),
                       _buildSignInWithText(),
-                      _buildSocialBtnRow(),
+                      //_builGoogleSignUpBtn(),
+                      //_buildSocialBtnRow(),
+                      _buildGoogleSignUpBtn(),
+                      _buildFacebookSignUpBtn(),
+                      SizedBox(height: 20),
                       _buildSignupBtn(),
                     ],
                   ),
