@@ -294,12 +294,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
           SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.only(left: 28, right: 28.0, top: 180.0),
+              
               child: Column(
                 children: <Widget>[
                   SizedBox(
                     height: ScreenUtil.getInstance().setHeight(130),
                   ),
-                  Container(
+             
+                 Container(
                     width: double.infinity,
                     height: ScreenUtil.getInstance().setHeight(450),
                     decoration: BoxDecoration(
@@ -317,9 +319,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             blurRadius: 10.0,
                           ),
                         ]),
+                  
                     child: Padding(
                       padding:
                           EdgeInsets.only(left: 16.0, right: 16.0, top: 20.0,),
+                     
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[

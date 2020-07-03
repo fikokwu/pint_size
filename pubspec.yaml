@@ -28,6 +28,11 @@ dependencies:
   shared_preferences: ^0.5.7+3
   firebase_core: ^0.4.5
   firebase_database: ^3.1.6
+  firebase_analytics: ^5.0.16
+  cloud_firestore: ^0.13.7
+  firebase_auth: ^0.16.1
+  google_sign_in: ^4.5.1
+  rxdart: ^0.24.1
 
   flutter_signin_button: ^1.0.0
   flutter:
