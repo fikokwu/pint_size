@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:pint_size/screens/login_screen.dart';
 import 'package:rxdart/rxdart.dart';
 
 class AuthenticationService {
@@ -19,11 +21,11 @@ class AuthenticationService {
 
   AuthenticationService() {
     user = (_authFirebase.onAuthStateChanged);
-    profile = user.switchMap((FirebaseUser u) {
-      if (u != null) {
+    profile = user.switchMap((FirebaseUser user) {
+      if (user != null) {
         return _database
             .collection('users')
-            .document(u.uid)
+            .document(user.uid)
             .snapshots()
             .map((snap) => snap.data);
       } else {
@@ -35,23 +37,31 @@ class AuthenticationService {
 
 // Will be used when a user taps the goolge sign in button and will take them to their
 // google account so they can log in and authenticate
-  Future<FirebaseUser> googleSignIn() async {
+  Future<bool> googleSignIn() async {
     loading.add(true);
-    GoogleSignInAccount googleUser = await _googleSignIn.signIn();
-    GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-    final AuthCredential credential = GoogleAuthProvider.getCredential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
-    final AuthResult authResult =
-        await _authFirebase.signInWithCredential(credential);
-    FirebaseUser user = authResult.user;
+    try {
+      GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+      GoogleSignInAuthentication googleAuth = await googleUser.authentication;
 
-    updateUserData(user);
-    print("signed in " + user.displayName);
+      if (googleAuth == false) return false;
 
-    loading.add(false);
-    return user;
+      final AuthCredential credential = GoogleAuthProvider.getCredential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+      final AuthResult authResult =
+          await _authFirebase.signInWithCredential(credential);
+      FirebaseUser user = authResult.user;
+
+      if (user == null) return false;
+      updateUserData(user);
+      print("signed in " + user.displayName);
+      return true;
+
+      //loading.add(false);
+    } catch (e) {
+      print("error logging in");
+    }
   }
 
 // Will update the user data inside firestore
@@ -68,9 +78,17 @@ class AuthenticationService {
   }
 
 // Sign out the user from firestore
-  void signOut() {
-    _authFirebase.signOut();
-  }
-}
+  Future signOut() async {
+    try {
+      print(_authFirebase.signOut().toString());
+      return await _authFirebase.signOut();
+    } catch (e) {
+      print(e.toString());
+      print("errolor logging out");
+
+      return null;
+    }
+  } // end of signout
+} // end of class
 
 final AuthenticationService authService = AuthenticationService();

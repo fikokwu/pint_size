@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pint_size/screens/calendar_screen.dart';
@@ -12,6 +13,7 @@ class NavDrawer extends StatefulWidget {
 }
 
 class _NavDrawerState extends State<NavDrawer> {
+  final AuthenticationService _auth = AuthenticationService();
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -114,15 +116,9 @@ class _NavDrawerState extends State<NavDrawer> {
                 color: Colors.white,
               ),
               title: Text('Logout'),
-              onTap: () => authService.signOut(),
-
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => LoginScreen(),
-              //   ),
-              // ); // Navigation
-              // }, //onTap
+              onTap: () {
+                _showDialog();
+              },
             ),
           ],
         ),
@@ -158,16 +154,14 @@ class _NavDrawerState extends State<NavDrawer> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            onPressed: () {
-              logOff = true;
+            onPressed: () async {
+              await _auth.signOut();
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => LoginScreen(),
                 ),
-              ); // Navigation
-              print("final:");
-              print(logOff);
+              );
             },
           ),
         ],

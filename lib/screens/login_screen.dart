@@ -8,7 +8,6 @@ import 'package:pint_size/screens/dashboard_screen.dart';
 import 'package:flutter/services.dart';
 import 'package:pint_size/utilities/authentication.dart';
 
-
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -16,8 +15,6 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _rememberMe = false;
-
-
 
   Widget _buildEmailTF() {
     return Column(
@@ -28,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
-            ),
+          ),
         ),
         SizedBox(height: 10.0),
         Container(
@@ -50,7 +47,6 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               hintText: 'Enter your Email',
               hintStyle: kHintTextStyle,
-              
             ),
           ),
         ),
@@ -64,10 +60,10 @@ class _LoginScreenState extends State<LoginScreen> {
       children: <Widget>[
         Text(
           'Password',
-            style: TextStyle(
+          style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
-            ),
+          ),
         ),
         SizedBox(height: 10.0),
         Container(
@@ -104,9 +100,9 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: EdgeInsets.only(right: 0.0),
         child: Text(
           'Forgot Password?',
-            style: TextStyle(
+          style: TextStyle(
             color: Colors.black,
-            ),
+          ),
         ),
       ),
     );
@@ -146,37 +142,34 @@ class _LoginScreenState extends State<LoginScreen> {
       padding: EdgeInsets.symmetric(vertical: 25.0),
       width: double.infinity,
       child: RaisedButton(
-        elevation: 5.0,
-        //onPressed: () => HomeScreen,
-        padding: EdgeInsets.all(15.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0),
-        ),
-        color: Colors.black,
-        child: Text(
-          'LOGIN',
-          style: TextStyle(
-            color: Colors.white,
-            letterSpacing: 1.5,
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'OpenSans',
+          elevation: 5.0,
+          //onPressed: () => HomeScreen,
+          padding: EdgeInsets.all(15.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.0),
           ),
-        ),
-        onPressed: (){
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => DashboardScreen(),
-
+          color: Colors.black,
+          child: Text(
+            'LOGIN',
+            style: TextStyle(
+              color: Colors.white,
+              letterSpacing: 1.5,
+              fontSize: 18.0,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'OpenSans',
             ),
-           ); // push
-        }// OnPressed
-      ),
-       
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DashboardScreen(),
+              ),
+            ); // push
+          } // OnPressed
+          ),
     );
     //HomeScreen();
-    
   }
 
   Widget _buildSignInWithText() {
@@ -191,12 +184,9 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
         SizedBox(height: 10.0),
-        
       ],
     );
   }
-
-  
 
   Widget _buildGoogleSignUpBtn() {
     return Container(
@@ -209,7 +199,19 @@ class _LoginScreenState extends State<LoginScreen> {
           text: 'Sign in with Google',
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(60.0)),
-          onPressed: () => authService.googleSignIn(),
+          onPressed: () async {
+            bool result = await authService.googleSignIn();
+            if (!result) {
+              print("auth failed");
+            } else {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DashboardScreen(),
+                ),
+              );
+            }
+          },
         ),
       ),
     );
@@ -232,76 +234,17 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-
-
-
-  Widget _buildSocialBtn(Function onTap, AssetImage logo) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: 60.0,
-        width: 60.0,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black26,
-              offset: Offset(0, 2),
-              blurRadius: 6.0,
-            ),
-          ],
-          image: DecorationImage(
-            image: logo,
-          ),
-        ),
-      ),
-    );
-  }
-
-  // Widget _buildSocialBtnRow() {
-  //   return Padding(
-  //     padding: EdgeInsets.symmetric(vertical: 30.0),
-  //     child: Row(
-  //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  //       children: <Widget>[
-  //         //_builGoogleSignUpBtn(),
-  //         _buildSocialBtn(
-  //           () => print('Login with Facebook'),
-  //           AssetImage(
-  //             'asset/logos/facebook.jpg',
-  //           ),
-  //         ),
-  //         _buildSocialBtn(
-            
-  //           () => print('Login with Google'),
-  //           AssetImage(
-  //             'asset/logos/google.jpg',
-  //           ),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
-
   Widget _buildSignupBtn() {
     return GestureDetector(
-      
       onTap: () {
         Navigator.push(
-                  context,
-                  
-                  MaterialPageRoute(
-                    
-                    builder: (context) => SignUpScreen()
-                    
-                  ),
-                ); // Navigation
+          context,
+          MaterialPageRoute(builder: (context) => SignUpScreen()),
+        ); // Navigation
       },
       child: RichText(
         text: TextSpan(
           children: [
-            
             TextSpan(
               text: 'Don\'t have an Account? ',
               style: TextStyle(
@@ -324,38 +267,32 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildLogo(Function onTap, AssetImage logo){
-
+  Widget _buildLogo(Function onTap, AssetImage logo) {
     return GestureDetector(
       //onTap: onTap,
       child: Container(
         height: 90.0,
         width: 100.0,
-        decoration: BoxDecoration( 
+        decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: Colors.white,
           boxShadow: [
             BoxShadow(
               color: Colors.black26,
-              offset: Offset(0,2),
+              offset: Offset(0, 2),
               blurRadius: 6.0,
             ),
           ], //boxshadow
           image: DecorationImage(
             image: logo,
           ),
-
         ),
-
       ),
-
     );
+  } // buildlogo
 
-
-  }// buildlogo
-
-Widget _showLogo(){
-     return Padding(
+  Widget _showLogo() {
+    return Padding(
       padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -364,18 +301,12 @@ Widget _showLogo(){
             () => print('Logo'),
             AssetImage(
               'asset/logos/icon.png',
-              
             ),
           ),
         ],
       ),
     );
   } // showlogo
-
-  
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -384,7 +315,6 @@ Widget _showLogo(){
     //   DeviceOrientation.portraitDown,
     // ]);
     return Scaffold(
-      
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: GestureDetector(
@@ -420,23 +350,20 @@ Widget _showLogo(){
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                 
                       _showLogo(),
-                       
+
                       SizedBox(height: 30.0),
                       _buildEmailTF(),
                       SizedBox(
                         height: 30.0,
                       ),
                       //_buildLogo(),
-                     
+
                       _buildPasswordTF(),
                       _buildForgotPasswordBtn(),
                       _buildRememberMeCheckbox(),
                       _buildLoginBtn(),
                       _buildSignInWithText(),
-                      //_builGoogleSignUpBtn(),
-                      //_buildSocialBtnRow(),
                       _buildGoogleSignUpBtn(),
                       _buildFacebookSignUpBtn(),
                       SizedBox(height: 30),
@@ -449,7 +376,7 @@ Widget _showLogo(){
           ),
         ),
       ),
-     // bottomNavigationBar: MyBottomNavigationBar(),
+      // bottomNavigationBar: MyBottomNavigationBar(),
     );
   }
 }
