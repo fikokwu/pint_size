@@ -14,6 +14,7 @@ class NavDrawer extends StatefulWidget {
 
 class _NavDrawerState extends State<NavDrawer> {
   final AuthenticationService _auth = AuthenticationService();
+  Future<FirebaseUser> user = FirebaseAuth.instance.currentUser();
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -155,13 +156,21 @@ class _NavDrawerState extends State<NavDrawer> {
               ),
             ),
             onPressed: () async {
-              await _auth.signOut();
+
+                await _auth.signOutApp();
+              setState(()  {
+                  print(user);
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => LoginScreen(),
                 ),
               );
+              },//setState
+              
+              );
+              
+            
             },
           ),
         ],

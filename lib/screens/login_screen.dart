@@ -199,9 +199,10 @@ class _LoginScreenState extends State<LoginScreen> {
           text: 'Sign in with Google',
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(60.0)),
-          onPressed: () async {
-            bool result = await authService.googleSignIn();
-            if (!result) {
+          onPressed: ()  {
+            setState(() async {
+              bool result = await authService.googleSignIn();
+            if (!result ) {
               print("auth failed");
             } else {
               Navigator.push(
@@ -211,6 +212,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               );
             }
+              
+            });
+ 
           },
         ),
       ),

@@ -19,7 +19,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
 
-        SizedBox(height: 10.0),
+        //SizedBox(height: 10.0),
         Container(
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
@@ -52,14 +52,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        // Text(
-        //   'Full Name',
-        //   textAlign: TextAlign.center,
-        //   style: TextStyle(
-        //     color: Colors.black,
-        //     fontWeight: FontWeight.bold,
-        //   ),
-        // ),
+
         SizedBox(height: 20.0),
         Container(
           alignment: Alignment.centerLeft,
@@ -84,7 +77,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
           ),
         ),
-        //SizedBox(height: 20.0),
+
       ],
     );
   }
@@ -93,13 +86,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        // Text(
-        //   'Email',
-        //   style: TextStyle(
-        //     color: Colors.black,
-        //     fontWeight: FontWeight.bold,
-        //   ),
-        // ),
+
         SizedBox(height: 20.0),
         Container(
           alignment: Alignment.centerLeft,
@@ -133,13 +120,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        // Text(
-        //   'Password',
-        //   style: TextStyle(
-        //     color: Colors.black,
-        //     fontWeight: FontWeight.bold,
-        //   ),
-        // ),
+  
         SizedBox(height: 20.0),
         Container(
           alignment: Alignment.centerLeft,
@@ -261,14 +242,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return new Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomPadding: true,
+      
       body: Stack(
         fit: StackFit.expand,
+        
         children: <Widget>[
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
+              
               Padding(
                 padding: EdgeInsets.only(top: 70),
+                
                 child: Image.asset(
                   'asset/logos/icon.png',
                   scale: 6.0,
@@ -303,10 +288,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
              
                  Container(
                     width: double.infinity,
-                    height: ScreenUtil.getInstance().setHeight(450),
+                    height: ScreenUtil.getInstance().setHeight(455),
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(60.0),
+                        borderRadius: BorderRadius.circular(40.0),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black12,
@@ -322,7 +307,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   
                     child: Padding(
                       padding:
-                          EdgeInsets.only(left: 16.0, right: 16.0, top: 20.0,),
+                          EdgeInsets.only(left: 16.0, right: 16.0, top: 20.0 ),
                      
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -337,16 +322,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   Container(
                     width: double.infinity,
-                    height: 370,
+                    height: 300,
                     padding: EdgeInsets.fromLTRB(0, 0, 0, 110),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
 
                         _buildSignUpBtn(),
-                        _buildSignUpWithText(),
-                        _builGoogleSignUpBtn(),
-                        _buildFacebookSignUpBtn(),
+                       // _buildSignUpWithText(),
+                        // _builGoogleSignUpBtn(),
+                        // _buildFacebookSignUpBtn(),
                         
                       ],
                     ),

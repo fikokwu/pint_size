@@ -10,7 +10,6 @@ class AuthenticationService {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FirebaseAuth _authFirebase = FirebaseAuth.instance;
   final Firestore _database = Firestore.instance;
-
   // these are shared state widgets
   Stream<FirebaseUser> user; // firebaseuser
   Stream<Map<String, dynamic>> profile; // custom user data in firestore
@@ -55,11 +54,14 @@ class AuthenticationService {
 
       if (user == null) return false;
       updateUserData(user);
+      loading.add(false);
       print("signed in " + user.displayName);
       return true;
 
       //loading.add(false);
     } catch (e) {
+      print("this is the error:");
+      print(e.toString());
       print("error logging in");
     }
   }
@@ -78,16 +80,20 @@ class AuthenticationService {
   }
 
 // Sign out the user from firestore
-  Future signOut() async {
+  Future <void> signOutApp() async {
     try {
-      print(_authFirebase.signOut().toString());
-      return await _authFirebase.signOut();
+      FirebaseAuth.instance.signOut();
+      _googleSignIn.disconnect();
+      // print(_authFirebase.signOut().toString());
+      // await _authFirebase.signOut();
+      //await _googleSignIn.disconnect();
     } catch (e) {
-      print(e.toString());
-      print("errolor logging out");
+      //print(e.toString());
+      //print("errolor logging out");
 
-      return null;
+     
     }
+    print(user.toList().toString());
   } // end of signout
 } // end of class
 

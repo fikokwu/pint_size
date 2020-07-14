@@ -17,7 +17,7 @@ class _CampaignScreenState extends State<CampaignScreen> {
     return Scaffold(
       drawer: NavDrawer(),
       appBar: AppBar(
-        title: Text('Campaign'),
+        title: Text('Campaign', textAlign: TextAlign.center,),
         backgroundColor: Colors.black,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
@@ -27,8 +27,8 @@ class _CampaignScreenState extends State<CampaignScreen> {
       ),
       body: 
       Container( 
-        padding: EdgeInsets.fromLTRB(105, 90, 105, 250),
-        height: MediaQuery.of(context).size.height,
+        padding: EdgeInsets.fromLTRB(105, 90, 105, 150),
+        height: MediaQuery.of(context).size.height * 200,
          child: Column(
            mainAxisAlignment: MainAxisAlignment.center,
            mainAxisSize: MainAxisSize.max,
