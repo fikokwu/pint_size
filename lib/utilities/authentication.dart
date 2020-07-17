@@ -50,6 +50,7 @@ class AuthenticationService {
       );
       final AuthResult authResult =
           await _authFirebase.signInWithCredential(credential);
+          
       FirebaseUser user = authResult.user;
 
       if (user == null) return false;
@@ -82,8 +83,13 @@ class AuthenticationService {
 // Sign out the user from firestore
   Future <void> signOutApp() async {
     try {
-      FirebaseAuth.instance.signOut();
-      _googleSignIn.disconnect();
+    
+      await FirebaseAuth.instance.signOut();
+    await   _authFirebase.signOut();
+        _googleSignIn.signOut();
+        Future<FirebaseUser> user = FirebaseAuth.instance.currentUser();
+        print('$user');
+
       // print(_authFirebase.signOut().toString());
       // await _authFirebase.signOut();
       //await _googleSignIn.disconnect();
