@@ -36,34 +36,32 @@ class AuthenticationService {
 
 // Will be used when a user taps the goolge sign in button and will take them to their
 // google account so they can log in and authenticate
-  Future<bool> googleSignIn() async {
-    loading.add(true);
+  Future<FirebaseUser> googleSignIn() async {
+    
     try {
+      loading.add(true);
       GoogleSignInAccount googleUser = await _googleSignIn.signIn();
       GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-
-      if (googleAuth == false) return false;
 
       final AuthCredential credential = GoogleAuthProvider.getCredential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
-      final AuthResult authResult =
-          await _authFirebase.signInWithCredential(credential);
-          
-      FirebaseUser user = authResult.user;
+      final AuthResult authResult = await _authFirebase.signInWithCredential(credential);
 
-      if (user == null) return false;
+      FirebaseUser user = authResult.user;
       updateUserData(user);
+      
+      print("user name: ${user.displayName}");
       loading.add(false);
-      print("signed in " + user.displayName);
-      return true;
+      return user;
 
       //loading.add(false);
     } catch (e) {
       print("this is the error:");
       print(e.toString());
       print("error logging in");
+      return e;
     }
   }
 
@@ -81,25 +79,24 @@ class AuthenticationService {
   }
 
 // Sign out the user from firestore
-  Future <void> signOutApp() async {
+  Future<String> signOutApp() async {
     try {
-    
-      await FirebaseAuth.instance.signOut();
-    await   _authFirebase.signOut();
-        _googleSignIn.signOut();
-        Future<FirebaseUser> user = FirebaseAuth.instance.currentUser();
-        print('$user');
+      await _authFirebase.signOut();
+      await _googleSignIn.signOut();
+      return 'Signout';
+      //Future<FirebaseUser> user = FirebaseAuth.instance.currentUser();
+      // print('$user');
+      // return new LoginScreen();
 
       // print(_authFirebase.signOut().toString());
       // await _authFirebase.signOut();
       //await _googleSignIn.disconnect();
     } catch (e) {
+      return e.toString();
       //print(e.toString());
       //print("errolor logging out");
 
-     
     }
-    print(user.toList().toString());
   } // end of signout
 } // end of class
 

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
+import 'package:pint_size/utilities/authentication.dart';
 import 'package:pint_size/utilities/constants.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
@@ -13,6 +14,15 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  final AuthenticationService _authenticationService = AuthenticationService();
+
+  //Text Fields State
+  String email = "";
+  String password= "";
+  String userName = "";
+  String fullName = "";
+
+
   @override
   Widget _buildUserName() {
     return Column(
@@ -41,8 +51,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
               hintText: 'Enter your username',
               hintStyle: kHintTextStyle,
             ),
+            onChanged: (value){
+              setState(() => userName = value);
+
+            },
           ),
         ),
+
+        
         // SizedBox(height: 20.0),
       ],
     );
@@ -75,6 +91,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
               hintText: 'Enter your Full Name',
               hintStyle: kHintTextStyle,
             ),
+            onChanged: (value){
+              setState(() => fullName = value);
+
+            },
           ),
         ),
 
@@ -109,6 +129,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
               hintText: 'Enter your Email',
               hintStyle: kHintTextStyle,
             ),
+            onChanged: (value){
+              setState(() => email = value);
+
+            },
           ),
         ),
         //SizedBox(height: 20.0),
@@ -144,6 +168,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
               hintText: 'Enter your Password',
               hintStyle: kHintTextStyle,
             ),
+            onChanged: (value){
+              setState(() => password = value);
+
+            },
           ),
         ),
       ],
@@ -172,13 +200,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
               fontFamily: 'OpenSans',
             ),
           ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => DashboardScreen(),
-              ),
-            ); // push
+          onPressed: () async{
+            print(email);
+            print(password);
+            print(fullName);
+            print(userName);
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (context) => DashboardScreen(),
+            //   ),
+            // ); // push
           } // OnPressed
           ),
     );

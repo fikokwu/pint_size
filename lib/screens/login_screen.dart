@@ -14,7 +14,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final AuthenticationService authenticationService = AuthenticationService();
+
   bool _rememberMe = false;
+  String password = "";
+  String email = "";
 
   Widget _buildEmailTF() {
     return Column(
@@ -48,6 +52,10 @@ class _LoginScreenState extends State<LoginScreen> {
               hintText: 'Enter your Email',
               hintStyle: kHintTextStyle,
             ),
+            onChanged: (value){
+              setState(() => email = value);
+
+            },
           ),
         ),
       ],
@@ -86,6 +94,10 @@ class _LoginScreenState extends State<LoginScreen> {
               hintText: 'Enter your Password',
               hintStyle: kHintTextStyle,
             ),
+            onChanged: (value){
+              setState(() => password = value);
+
+            },
           ),
         ),
       ],
@@ -200,17 +212,14 @@ class _LoginScreenState extends State<LoginScreen> {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(60.0)),
           onPressed: () async {
-            bool result = await authService.googleSignIn();
-            if (!result) {
-              print("auth failed");
-            } else {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DashboardScreen(),
-                ),
-              );
-            }
+            await authService.googleSignIn();
+
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DashboardScreen(),
+              ),
+            );
           },
         ),
       ),

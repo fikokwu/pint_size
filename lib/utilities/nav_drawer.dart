@@ -147,6 +147,19 @@ class _NavDrawerState extends State<NavDrawer> {
               print(logOff),
             },
           ),
+          // StreamBuilder(
+          //   stream: authService.user,
+          //   builder: (context, snapshot) {
+          //     if (snapshot.hasData) {
+          //       return MaterialButton(
+          //         onPressed: () => authService.signOutApp(),
+          //         color: Colors.red,
+          //         textColor: Colors.white,
+          //         child: Text('Signout'),
+          //       );
+          //     }
+          //   },
+          // ),
           FlatButton(
             child: Text(
               "Yes",
@@ -156,21 +169,14 @@ class _NavDrawerState extends State<NavDrawer> {
               ),
             ),
             onPressed: () async {
-
-                await _auth.signOutApp();
-              setState(()  {
-                  print(user);
+             await _auth.signOutApp();
+              print(user);
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => LoginScreen(),
                 ),
               );
-              },//setState
-              
-              );
-              
-            
             },
           ),
         ],

@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
-import 'package:pint_size/screens/registration.dart';
+
+import 'package:pint_size/utilities/campaignreg.dart';
 
 import 'package:pint_size/utilities/nav_drawer.dart';
 import 'package:pint_size/utilities/MyBottomNavBar.dart';
@@ -84,7 +85,7 @@ class _CampaignScreenState extends State<CampaignScreen> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => Registration(),
+              builder: (context) => CampaignReg(),
 
             ),
            ); // push
@@ -122,7 +123,7 @@ class _CampaignScreenState extends State<CampaignScreen> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => Registration()
+              builder: (context) => CampaignReg(),
 
             ),
            ); // push
