@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pint_size/screens/signup_screen.dart';
 import 'package:pint_size/utilities/constants.dart';
 import 'package:pint_size/screens/dashboard_screen.dart';
@@ -180,11 +181,20 @@ class _LoginScreenState extends State<LoginScreen> {
                           print(email);
                           print(password);
                           print('valid');
-                          dynamic result = await _authenticationService.signInWithEmailAndPassword(email, password);
+                          dynamic result = await _authenticationService
+                              .signInWithEmailAndPassword(email, password);
 
                           if (result == null) {
-                            setState(() => error = 'Could not sign in with those credentials');
+                            setState(() => error =
+                                'Could not sign in with those credentials');
                           } else {
+                            Fluttertoast.showToast(
+                              msg:
+                                  "Succefully Signed In",
+                              toastLength: Toast.LENGTH_LONG,
+                              gravity: ToastGravity.BOTTOM,
+                              timeInSecForIosWeb: 10,
+                            );
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -199,10 +209,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: 15),
                 Container(
                   alignment: Alignment.center,
-                child: Text(
-                  error,
-                  style: TextStyle(color: Colors.red, fontSize: 14,),textAlign: TextAlign.center,
-                ),
+                  child: Text(
+                    error,
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 14,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 SizedBox(height: 15),
                 Container(
@@ -232,6 +246,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           borderRadius: BorderRadius.circular(60.0)),
                       onPressed: () async {
                         await authService.googleSignIn();
+                        Fluttertoast.showToast(
+                              msg:
+                                  "Succefully Signed In with Google",
+                              toastLength: Toast.LENGTH_LONG,
+                              gravity: ToastGravity.BOTTOM,
+                              timeInSecForIosWeb: 2,
+                            );
 
                         Navigator.push(
                           context,
