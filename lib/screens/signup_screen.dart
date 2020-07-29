@@ -16,16 +16,13 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   final AuthenticationService _authenticationService = AuthenticationService();
   final _formkey = GlobalKey<FormState>();
-  final _formkey2 = GlobalKey<FormState>();
-  final _formkey3 = GlobalKey<FormState>();
-  final _formkey4 = GlobalKey<FormState>();
-  final _formkey5 = GlobalKey<FormState>();
 
   //Text Fields State
   String email = "";
   String password = "";
   String userName = "";
   String fullName = "";
+  String error = "";
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +91,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                 ),
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 20),
               Container(
                 alignment: Alignment.centerLeft,
                 decoration: kBoxDecorationStyle,
@@ -122,7 +119,66 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                 ),
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 20),
+              Container(
+                alignment: Alignment.centerLeft,
+                decoration: kBoxDecorationStyle,
+                height: 40.0,
+                width: 350,
+                child: TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'OpenSans',
+                  ),
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.only(top: 5.0),
+                    prefixIcon: Icon(
+                      Icons.email,
+                      size: 25,
+                      color: Colors.red,
+                    ),
+                    hintText: 'Enter your Email',
+                    hintStyle: kHintTextStyle,
+                  ),
+                  onChanged: (value) {
+                    setState(() => email = value);
+                  },
+                ),
+              ),
+              SizedBox(height: 20.0),
+              Container(
+                alignment: Alignment.centerLeft,
+                decoration: kBoxDecorationStyle,
+                height: 40.0,
+                width: 350,
+                child: TextFormField(
+                  obscureText: true,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'OpenSans',
+                  ),
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.only(top: 5.0),
+                    prefixIcon: Icon(
+                      Icons.lock,
+                      size: 25,
+                      color: Colors.red,
+                    ),
+                    hintText: 'Enter your Password',
+                    hintStyle: kHintTextStyle,
+                  ),
+                  validator: (val) => val.length < 6
+                      ? 'Enter a password at least 6 charactors long'
+                      : null,
+                  onChanged: (value) {
+                    setState(() => password = value);
+                  },
+                ),
+              ),
+              SizedBox(height: 40.0),
               SizedBox(
                 width: 250,
                 child: RaisedButton(
@@ -145,10 +201,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     onPressed: () async {
                       if (_formkey.currentState.validate()) {
-                        // print(email);
-                        // print(password);
-                        print(fullName);
                         print(userName);
+                        print(fullName);
+                        print(email);
+                        print(password);
+                        dynamic result = await _authenticationService
+                            .registerWithEmailAndPassword(email, password);
+                        if (result == null) {
+                          setState(() => error = 'pleaser suply a valid email');
+                        } else {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DashboardScreen(),
+                            ),
+                          ); // push
+                        }
                       }
                       // Navigator.push(
                       //   context,
@@ -159,6 +227,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     } // OnPressed
                     ),
               ),
+              SizedBox (height: 15),
+              Text(
+                error,
+                style: TextStyle(color: Colors.black, fontSize: 14),
+              ),
+
             ],
           ),
         ),

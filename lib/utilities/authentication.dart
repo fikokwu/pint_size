@@ -5,6 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:pint_size/screens/login_screen.dart';
 import 'package:rxdart/rxdart.dart';
 
+import 'user.dart';
+
 class AuthenticationService {
   //these are our dependecies
   final GoogleSignIn _googleSignIn = GoogleSignIn();
@@ -37,7 +39,6 @@ class AuthenticationService {
 // Will be used when a user taps the goolge sign in button and will take them to their
 // google account so they can log in and authenticate
   Future<FirebaseUser> googleSignIn() async {
-    
     try {
       loading.add(true);
       GoogleSignInAccount googleUser = await _googleSignIn.signIn();
@@ -47,11 +48,12 @@ class AuthenticationService {
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
-      final AuthResult authResult = await _authFirebase.signInWithCredential(credential);
+      final AuthResult authResult =
+          await _authFirebase.signInWithCredential(credential);
 
       FirebaseUser user = authResult.user;
       updateUserData(user);
-      
+
       print("user name: ${user.displayName}");
       loading.add(false);
       return user;
@@ -98,6 +100,22 @@ class AuthenticationService {
 
     }
   } // end of signout
+
+  Future registerWithEmailAndPassword(String email, String password) async {
+    try {
+      AuthResult result = await _authFirebase.createUserWithEmailAndPassword(
+          email: email, password: password);
+      FirebaseUser user = result.user;
+      return _userFromFirebaseUser(user);
+    } catch (e) {
+      print(e.toString());
+      return null; 
+    }
+  }
+
+  User _userFromFirebaseUser (FirebaseUser user){
+    return user != null ? User(uid: user.uid) : null ;
+  }
 } // end of class
 
 final AuthenticationService authService = AuthenticationService();
