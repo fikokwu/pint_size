@@ -116,6 +116,21 @@ class AuthenticationService {
   User _userFromFirebaseUser (FirebaseUser user){
     return user != null ? User(uid: user.uid) : null ;
   }
+Future signInWithEmailAndPassword(String email, String password) async {
+    try {
+      AuthResult result = await _authFirebase.signInWithEmailAndPassword(
+          email: email, password: password);
+      FirebaseUser user = result.user;
+    // updateUserData(user);
+
+    //   print("user name: ${user.displayName}");
+      return _userFromFirebaseUser(user);
+    } catch (e) {
+      print(e.toString());
+      return null; 
+    }
+  }
+
 } // end of class
 
 final AuthenticationService authService = AuthenticationService();

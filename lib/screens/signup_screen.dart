@@ -125,7 +125,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 decoration: kBoxDecorationStyle,
                 height: 40.0,
                 width: 350,
-                child: TextField(
+                child: TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   style: TextStyle(
                     color: Colors.white,
@@ -142,6 +142,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     hintText: 'Enter your Email',
                     hintStyle: kHintTextStyle,
                   ),
+                  validator: (val) => val.isEmpty ? "Enter an email" : null,
                   onChanged: (value) {
                     setState(() => email = value);
                   },
@@ -182,57 +183,49 @@ class _SignUpScreenState extends State<SignUpScreen> {
               SizedBox(
                 width: 250,
                 child: RaisedButton(
-                    elevation: 4.0,
-                    //onPressed: () => HomeScreen,
-                    padding: EdgeInsets.all(15.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(70.0),
+                  elevation: 4.0,
+                  padding: EdgeInsets.all(15.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(70.0),
+                  ),
+                  color: Colors.black,
+                  child: Text(
+                    'Sign Up',
+                    style: TextStyle(
+                      color: Colors.white,
+                      letterSpacing: 1.5,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'OpenSans',
                     ),
-                    color: Colors.black,
-                    child: Text(
-                      'Sign Up',
-                      style: TextStyle(
-                        color: Colors.white,
-                        letterSpacing: 1.5,
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'OpenSans',
-                      ),
-                    ),
-                    onPressed: () async {
-                      if (_formkey.currentState.validate()) {
-                        print(userName);
-                        print(fullName);
-                        print(email);
-                        print(password);
-                        dynamic result = await _authenticationService
-                            .registerWithEmailAndPassword(email, password);
-                        if (result == null) {
-                          setState(() => error = 'pleaser suply a valid email');
-                        } else {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => DashboardScreen(),
-                            ),
-                          ); // push
-                        }
+                  ),
+                  onPressed: () async {
+                    if (_formkey.currentState.validate()) {
+                      print(userName);
+                      print(fullName);
+                      print(email);
+                      print(password);
+                      dynamic result = await _authenticationService
+                          .registerWithEmailAndPassword(email, password);
+                      if (result == null) {
+                        setState(() => error = 'Error:Pleaser suply a valid email');
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DashboardScreen(),
+                          ),
+                        ); // push
                       }
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => DashboardScreen(),
-                      //   ),
-                      // ); // push
-                    } // OnPressed
-                    ),
+                    }
+                  }, // OnPressed
+                ),
               ),
-              SizedBox (height: 15),
+              SizedBox(height: 15),
               Text(
                 error,
-                style: TextStyle(color: Colors.black, fontSize: 14),
+                style: TextStyle(color: Colors.red, fontSize: 14),
               ),
-
             ],
           ),
         ),
