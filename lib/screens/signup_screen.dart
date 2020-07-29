@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:pint_size/screens/login_screen.dart';
 import 'package:pint_size/utilities/authentication.dart';
 import 'package:pint_size/utilities/constants.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
@@ -210,10 +212,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       if (result == null) {
                         setState(() => error = 'Error:Pleaser suply a valid email');
                       } else {
+                        Fluttertoast.showToast(
+                          msg: "Please confirm your email before loginin. You are now being redirected to the Login Page",
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 10,
+                          
+                        );
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => DashboardScreen(),
+                            builder: (context) => LoginScreen(),
                           ),
                         ); // push
                       }

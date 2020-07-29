@@ -102,11 +102,14 @@ class AuthenticationService {
   } // end of signout
 
   Future registerWithEmailAndPassword(String email, String password) async {
-    try {
-      AuthResult result = await _authFirebase.createUserWithEmailAndPassword(
+     AuthResult result = await _authFirebase.createUserWithEmailAndPassword(
           email: email, password: password);
+    try {
       FirebaseUser user = result.user;
+
+      await user.sendEmailVerification();
       return _userFromFirebaseUser(user);
+
     } catch (e) {
       print(e.toString());
       return null; 
@@ -121,10 +124,13 @@ Future signInWithEmailAndPassword(String email, String password) async {
       AuthResult result = await _authFirebase.signInWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
-    // updateUserData(user);
 
-    //   print("user name: ${user.displayName}");
-      return _userFromFirebaseUser(user);
+      if (user.isEmailVerified){
+       return _userFromFirebaseUser(user);
+      }else{
+        return null;
+      }
+      
     } catch (e) {
       print(e.toString());
       return null; 
