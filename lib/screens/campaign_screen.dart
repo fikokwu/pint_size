@@ -14,6 +14,10 @@ class CampaignScreen extends StatefulWidget {
 
 class _CampaignScreenState extends State<CampaignScreen> {
   @override
+
+  void openURL(){
+ 
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: NavDrawer(),

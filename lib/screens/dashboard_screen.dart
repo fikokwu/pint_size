@@ -22,6 +22,7 @@ class DashboardScreenState extends State<DashboardScreen> {
     _dashboardBlock = DashboardBlock();
     super.initState();
   }
+  
 
   @override
   void dispose() {

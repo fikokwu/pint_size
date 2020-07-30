@@ -136,6 +136,11 @@ Future signInWithEmailAndPassword(String email, String password) async {
       return null; 
     }
   }
+@override
+Future<void> resetPassword(String email) async {
+    await _authFirebase.sendPasswordResetEmail(email: email);
+}
+
 
 } // end of class
 

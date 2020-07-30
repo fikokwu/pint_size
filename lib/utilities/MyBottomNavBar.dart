@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MyBottomNaBar extends StatefulWidget {
   _MyBottomNavBarState createState() => _MyBottomNavBarState();
@@ -7,6 +8,12 @@ class MyBottomNaBar extends StatefulWidget {
 class _MyBottomNavBarState extends State<MyBottomNaBar> {
   Color _originalColor = Colors.black;
   AnimationController _iconAnimationController;
+  void openURL() {
+
+    var url = "https://myaccount.blood.ca/en/donate";
+    launch(url);
+
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,7 +41,9 @@ class _MyBottomNavBarState extends State<MyBottomNaBar> {
               size: 38.0,
             ),
             onPressed: () {
-              Navigator.pushReplacementNamed(context, '/campaign');
+              openURL();
+              print("blood click");
+              // Navigator.pushReplacementNamed(context, '/campaign');
             },
             color: Colors.red,
           ),

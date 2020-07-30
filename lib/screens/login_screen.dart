@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_signin_button/button_list.dart';
-import 'package:flutter_signin_button/button_view.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_signin_button/button_view.dart';
 import 'package:pint_size/screens/signup_screen.dart';
 import 'package:pint_size/utilities/constants.dart';
 import 'package:pint_size/screens/dashboard_screen.dart';
@@ -145,7 +145,23 @@ class _LoginScreenState extends State<LoginScreen> {
                 Container(
                   alignment: Alignment.centerRight,
                   child: FlatButton(
-                    onPressed: () => print('Forgot Password Button Pressed'),
+                    onPressed: () async {
+                      if (email == "") {
+                        setState(() =>
+                            error = 'Please enter your email address');
+                      }else{
+                      //await _authenticationService.resetPassword(email);
+                      if (_authenticationService.resetPassword(email) == null){
+                        print("HELLLOOOOO");
+                      }
+                      }
+                      Fluttertoast.showToast(
+                              msg: "A reset passowrd link has been sent to your account",
+                              toastLength: Toast.LENGTH_LONG,
+                              gravity: ToastGravity.BOTTOM,
+                              timeInSecForIosWeb: 10,
+                      );
+                    },
                     padding: EdgeInsets.only(right: 0.0),
                     child: Text(
                       'Forgot Password?',
@@ -189,8 +205,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 'Could not sign in with those credentials');
                           } else {
                             Fluttertoast.showToast(
-                              msg:
-                                  "Succefully Signed In",
+                              msg: "Succefully Signed In",
                               toastLength: Toast.LENGTH_LONG,
                               gravity: ToastGravity.BOTTOM,
                               timeInSecForIosWeb: 10,
@@ -247,12 +262,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () async {
                         await authService.googleSignIn();
                         Fluttertoast.showToast(
-                              msg:
-                                  "Succefully Signed In with Google",
-                              toastLength: Toast.LENGTH_LONG,
-                              gravity: ToastGravity.BOTTOM,
-                              timeInSecForIosWeb: 2,
-                            );
+                          msg: "Succefully Signed In with Google",
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 2,
+                        );
 
                         Navigator.push(
                           context,

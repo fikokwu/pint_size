@@ -7,6 +7,7 @@ import 'package:pint_size/screens/dashboard_screen.dart';
 import 'package:pint_size/screens/login_screen.dart';
 import 'package:pint_size/screens/profile_screen.dart';
 import 'package:pint_size/utilities/authentication.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class NavDrawer extends StatefulWidget {
   _NavDrawerState createState() => _NavDrawerState();
@@ -15,6 +16,13 @@ class NavDrawer extends StatefulWidget {
 class _NavDrawerState extends State<NavDrawer> {
   final AuthenticationService _auth = AuthenticationService();
   Future<FirebaseUser> user = FirebaseAuth.instance.currentUser();
+
+  void openURL() {
+
+    var url = "https://myaccount.blood.ca/en/donate";
+    launch(url);
+
+  }
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -95,12 +103,15 @@ class _NavDrawerState extends State<NavDrawer> {
               ),
               title: Text('Campaign'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => CampaignScreen(),
-                  ),
-                ); // Navigation
+                openURL();
+
+
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => CampaignScreen(),
+                //   ),
+                // ); // Navigation
               }, //onTap
             ),
             ListTile(

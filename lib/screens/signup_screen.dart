@@ -35,8 +35,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
       backgroundColor: Colors.white,
       resizeToAvoidBottomPadding: true,
       body: Container(
+        child: SingleChildScrollView(
         child: Form(
           key: _formkey,
+          
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
@@ -238,6 +240,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ],
           ),
         ),
+      ),
       ),
     );
   }
