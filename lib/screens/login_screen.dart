@@ -158,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Fluttertoast.showToast(
                               msg: "A reset passowrd link has been sent to your account",
                               toastLength: Toast.LENGTH_LONG,
-                              gravity: ToastGravity.BOTTOM,
+                              gravity: ToastGravity.TOP,
                               timeInSecForIosWeb: 10,
                       );
                     },
