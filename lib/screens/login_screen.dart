@@ -147,19 +147,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: FlatButton(
                     onPressed: () async {
                       if (email == "") {
-                        setState(() =>
-                            error = 'Please enter your email address');
-                      }else{
-                      //await _authenticationService.resetPassword(email);
-                      if (_authenticationService.resetPassword(email) == null){
-                        print("HELLLOOOOO");
-                      }
+                        setState(
+                            () => error = 'Please enter your email address');
+                      } else {
+                        //await _authenticationService.resetPassword(email);
+                        if (_authenticationService.resetPassword(email) ==
+                            null) {
+                          print("HELLLOOOOO");
+                        }
                       }
                       Fluttertoast.showToast(
-                              msg: "A reset passowrd link has been sent to your account",
-                              toastLength: Toast.LENGTH_LONG,
-                              gravity: ToastGravity.TOP,
-                              timeInSecForIosWeb: 10,
+                        msg:
+                            "A reset passowrd link has been sent to your account",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.TOP,
+                        timeInSecForIosWeb: 10,
                       );
                     },
                     padding: EdgeInsets.only(right: 0.0),
